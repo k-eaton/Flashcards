@@ -1,7 +1,7 @@
 class CreateCards < ActiveRecord::Migration
     def change
       create_table :cards do |t|
-      t.belongs_to :deck, index :true
+      t.belongs_to :deck, index:true
       t.string :cardname
       t.string :question
       t.string :correct_answer

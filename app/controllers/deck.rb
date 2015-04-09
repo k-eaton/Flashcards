@@ -6,4 +6,6 @@ get '/deck/:id/cards' do
   erb :cards
 end
 
-get '/'
+get '/' do
+
+end
