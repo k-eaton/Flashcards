@@ -1,3 +1,8 @@
 <h1>It's all about the cards</h1>
 <h2>Pick your poison</h2>
 
+<ol>
+  <% @decks.each do |deck| %>
+    <li><a href="/decks/<%= deck.id %>"><%= deck.name %></a></li>
+  <% end %>
+</ol>
