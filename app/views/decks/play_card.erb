@@ -1,0 +1,5 @@
+<h1><%= @message %></h1>
+<%= @all_cards[0].question %>
+<% @all_cards.each do |card| %>
+  <p><%= card.question %><p>
+<% end %>
