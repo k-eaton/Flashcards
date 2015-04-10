@@ -1,0 +1,35 @@
+<!-- <h1>List of Flashcards</h1>
+  <% @all_cards_in_deck.each do |card| %>
+      <p><b>Question:<%= card.question %></b></p>
+      <p>Answer1:<%= card.incorrect_answer1 %></p>
+      <p>Answer2:<%= card.incorrect_answer2 %></p>
+      <p>Answer3:<%= card.incorrect_answer3 %></p>
+      <p>Answer4:<%= card.correct_answer %></p>
+              <% end %>
+
+               <% @all_cards_in_deck.each do |card| %>
+       <p><b>Question:<%= card.question %></b></p>
+       <% end %>
+ -->
+
+ <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flashcard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="app.js"></script>
+</head>
+<h1>Flashcard Editor</h1>
+<body>
+  <h1>List of Flashcards</h1>
+  <% @all_cards_in_deck.each do |card| %>
+      <p><a href ='/decks/<%= card.deck_id %>/cards/<%= card.id %>'><b>Question:<%= card.question %></b></a></p>
+      <p>Answer1:<%= card.incorrect_answer1 %></p>
+      <p>Answer2:<%= card.incorrect_answer2 %></p>
+      <p>Answer3:<%= card.incorrect_answer3 %></p>
+      <p>Answer4:<%= card.correct_answer %></p>
+              <% end %>
+      </div>
+

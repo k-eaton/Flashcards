@@ -1,6 +1,12 @@
 .stage {
  -webkit-perspective: 1000;                   /* Sets up your viewpoint for seeing the animation */
 }
+.h1 {
+  font-size: 25px;
+}
+.p {
+  font-size: 12px;
+}
 
 .flashcard {
   height: 300px;
@@ -27,6 +33,5 @@
 }
 
 .front p, .back p {
-  margin-top: 25%;
-  font-size: 3em;
+  font-size: 12px;
 }
