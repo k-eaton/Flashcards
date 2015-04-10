@@ -3,19 +3,20 @@ get '/decks' do
   erb :'decks/decks'
 end
 
-get '/decks/:id' do
-  @deck = Deck.where(id: params[:id]).first
-  @cards = Card.where(deck_id: params[:id])
-  erb :'decks/deck'
-end
-
 get '/decks/new' do
-
   erb :'decks/new'
 end
 
 post '/decks' do
-  redirect '/decks/cards/new'
+  @new_deck = Deck.new(name: params[:name])
+
+  redirect '/decks/'+@new_deck.id+'/cards/new'
+end
+
+get '/decks/:id' do
+  @deck = Deck.where(id: params[:id]).first
+  @cards = Card.where(deck_id: params[:id])
+  erb :'decks/deck'
 end
 
 get '/decks/:id/edit' do
