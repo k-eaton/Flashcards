@@ -30,3 +30,14 @@
   margin-top: 25%;
   font-size: 3em;
 }
+
+.edit {
+  float: left;
+  list-style-type: none;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+.card-list {
+  clear: both;
+}
