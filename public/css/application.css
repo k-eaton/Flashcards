@@ -31,7 +31,7 @@
   font-size: 3em;
 }
 
-.edit {
+.nav {
   float: left;
   list-style-type: none;
   padding-right: 20px;
@@ -40,4 +40,18 @@
 
 .card-list {
   clear: both;
+}
+
+.edit {
+  list-style-type: none;
+  padding-left: 10px;
+  padding-top: 8px;
+  float: left;
+}
+
+.delete {
+  float: left;
+  padding-top: 5px;
+  clear: left;
+  border: none;
 }

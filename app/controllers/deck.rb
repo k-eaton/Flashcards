@@ -14,7 +14,7 @@ post '/decks' do
     redirect '/decks/'+@new_id+'/cards/new'
   else
     status 500
-
+    "Denied!  (Your new deck does not exist)"
   end
 end
 
@@ -25,6 +25,8 @@ get '/decks/:id' do
 end
 
 get '/decks/:id/edit' do
+  @deck = Deck.where(id: params[:id]).first
+  @cards = Card.where(deck_id: params[:id])
   erb :'decks/edit'
 end
 
