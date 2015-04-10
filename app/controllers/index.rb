@@ -3,12 +3,13 @@ get '/' do
 end
 
 get '/decks/:id/cards' do
-  @all_decks = Deck.all
-  erb :deck
+  @individual_deck = Deck.find(params[:id])
+  @all_cards_in_deck = Card.where(deck_id: @individual_deck.id)
+  erb :cards
 end
 
-get '/decks/:id/cards/:id' do
-  @individual_card = Card.where(id: params[:id]).first
+get '/decks/:deck_id/cards/:card_id' do
+  @individual_card = Card.find(params[:card_id])
   erb :card
 end
 
@@ -21,6 +22,10 @@ get '/decks/:id/cards/new' do
       erb :form
     end
 end
+
+# get '/decks/:id/cards/:card_id/edit' do
+
+
 
 post '/decks/:id/cards' do
 end

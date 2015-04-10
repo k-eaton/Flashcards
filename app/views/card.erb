@@ -1,22 +1,9 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Flashcard</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-  <script src="app.js"></script>
-</head>
-<body>
-  <div class="stage">
-    <div class="flashcard">
-      <div class="front">
-        <p>Front</p>
-      </div>
-      <div class="back">
-        <p>Back</p>
-      </div>
-    </div>
-  </div>
-</body>
-</html>
+  <h1>Individual Card</h1>
+      <p><b>Question:<%= @individual_card.question %></b></p>
+      <p>Answer1: <%= @individual_card.incorrect_answer1 %></p>
+      <p>Answer2: <%= @individual_card.incorrect_answer2 %></p>
+      <p>Answer3: <%= @individual_card.incorrect_answer3 %></p>
+      <p>Answer4: <%= @individual_card.correct_answer %></p>
+
+      <a href =
+
