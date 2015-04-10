@@ -14,8 +14,8 @@ post '/decks' do
     redirect '/decks/'+@new_id+'/cards/new'
   else
     status 500
-  end
 
+  end
 end
 
 get '/decks/:id' do
