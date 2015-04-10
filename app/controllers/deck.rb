@@ -1,5 +1,5 @@
 get '/decks' do
-  @decks = Deck.all
+  @decks = Deck.all.order("id ASC")
   erb :'decks/decks'
 end
 
@@ -31,13 +31,15 @@ get '/decks/:id/edit' do
 end
 
 put '/decks/:id' do
-  redirect '/decks/:id'
+  deck = Deck.where(id: params[:id]).first
+  deck.update(name: params[:deck_name])
+  redirect '/decks/'+deck.id.to_s
 end
 
 get '/decks/:id/delete' do
-  erb :'decks/delete'
-end
-
-delete '/decks/:id' do
+  @to_be_deleted = Deck.where(id: params[:id]).first
+  @to_be_deleted.delete
+  @cards_to_be_deleted = Card.where(deck_id: params[:id])
+  @cards_to_be_deleted.each {|card| card.delete}
   redirect '/decks'
 end

@@ -2,16 +2,6 @@ get '/' do
   erb :index
 end
 
-get '/decks/:id/cards' do
-  @all_decks = Deck.all
-  erb :deck
-end
-
-get '/decks/:id/cards/:id' do
-  @individual_card = Card.where(id: params[:id]).first
-  erb :card
-end
-
 get '/decks/:id/cards/new' do
   @new_card = Card.new(card: params[:card])
     if @card.save
@@ -21,6 +11,12 @@ get '/decks/:id/cards/new' do
       erb :form
     end
 end
+
+get '/decks/:id/cards/:id' do
+  @individual_card = Card.where(id: params[:id]).first
+  erb :card
+end
+
 
 post '/decks/:id/cards' do
 end
