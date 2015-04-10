@@ -1,6 +1,7 @@
+<div class="container">
 <h1>Select a Deck to Play</h1>
 
 <% @all_decks.each do |deck| %>
-  <p><a href="/play/decks/<%= deck.id %>"><%= deck.name %></a></p>
+  <p><a href="/play/decks/<%= deck.id %>/cards/0/first"><%= deck.name %></a></p>
 <% end %>
-
+</div>

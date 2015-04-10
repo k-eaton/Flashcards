@@ -47,24 +47,45 @@ end
 
 get '/play/decks/show' do
   @all_decks = Deck.all
+  session[:score] = 0
 
-erb :"decks/play_show_decks"
+  erb :"decks/play_show_decks"
 end
 
-get '/play/decks/:id' do
-  @message = "Welcome! Pick the right answer"
-  @all_cards = Deck.find(params[:id]).cards.all
-  @this_card = 0
-  if true
-    if true # == @this_card.correct_answer
+get '/play/decks/:deck_id/cards/:card_id/:que' do
+  @deck = Deck.find(params[:deck_id])
+  @all_cards = @deck.cards.all
+  @card_iterator = params[:card_id].to_i
+  if params[:card_id].to_i < (@all_cards.length - 1)
+    if params[:que] == "first"
+      @message = "Welcome! Pick the right answer"
+    elsif params[:que] == "correct" #@this_card.correct_answer
       @message = "Correct! How about this one?"
-      @this_card += 1
-    else
+      @card_iterator += 1
+    elsif params[:que] == "incorrect"
       @message = "WRONG! Maybe you'll have better luck with this one:"
-      @this_card += 1
+      @card_iterator += 1
+    else
+      @message = "Error. Don't ya hate that? Start over again."
     end
-  end
-
   erb :"decks/play_card"
+  else
+    @message = "Nice job!"
+    @completed_message = "You got #{session[:score]} out of #{@all_cards.length}"
+  erb :"decks/completed"
+  end
+end
+
+post '/play/decks/:deck_id/cards/:card_id' do
+    if params[:selected] == "correct_answer"
+      session[:score] += 1
+      p "&"*80
+      p session[:score]
+      redirect "/play/decks/#{params[:deck_id]}/cards/#{params[:card_id]}/correct"
+    elsif
+      params[:selected] != "correct_answer"
+      p session[:score]
+      redirect "/play/decks/#{params[:deck_id]}/cards/#{params[:card_id]}/incorrect"
+    end
 end
 
