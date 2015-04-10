@@ -9,8 +9,13 @@ end
 
 post '/decks' do
   @new_deck = Deck.new(name: params[:name])
+  if @new_deck.save
+    @new_id = @new_deck.id.to_s
+    redirect '/decks/'+@new_id+'/cards/new'
+  else
+    status 500
+  end
 
-  redirect '/decks/'+@new_deck.id+'/cards/new'
 end
 
 get '/decks/:id' do
