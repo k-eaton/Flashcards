@@ -1,5 +1,14 @@
 <h1><%= @message %></h1>
-<%= @all_cards[0].question %>
-<% @all_cards.each do |card| %>
-  <p><%= card.question %><p>
-<% end %>
+<%= @all_cards[@card_iterator].question %>
+
+<form action="/play/decks/<%= @deck.id %>/cards/<%= @card_iterator %>" method="post">
+  <input type="radio" name="correct_answer" value="correct_answer"><%= @all_cards[@card_iterator].correct_answer %>
+  <br>
+  <input type="radio" name="incorrect_answer1" value="incorrect_answer1"><%= @all_cards[@card_iterator].incorrect_answer1 %>
+  <br>
+  <input type="radio" name="incorrect_answer2" value="incorrect_answer2"><%= @all_cards[@card_iterator].incorrect_answer2 %>
+  <br>
+  <input type="radio" name="incorrect_answer3" value="incorrect_answer3"><%= @all_cards[@card_iterator].incorrect_answer3 %>
+  <br>
+  <input type="submit" value="Final answer!"/>
+</form>

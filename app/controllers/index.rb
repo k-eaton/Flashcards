@@ -36,23 +36,30 @@ end
 get '/play/decks/show' do
   @all_decks = Deck.all
 
-erb :"decks/play_show_decks"
+  erb :"decks/play_show_decks"
 end
 
-get '/play/decks/:id' do
+get '/play/decks/:deck_id/cards/:card_id' do
   @message = "Welcome! Pick the right answer"
-  @all_cards = Deck.find(params[:id]).cards.all
-  @this_card = 0
+  @deck = Deck.find(params[:deck_id])
+  @all_cards = @deck.cards.all
+  @card_iterator = params[:card_id].to_i
   if true
     if true # == @this_card.correct_answer
       @message = "Correct! How about this one?"
-      @this_card += 1
+      @card_iterator += 1
     else
       @message = "WRONG! Maybe you'll have better luck with this one:"
-      @this_card += 1
+      @card_iterator += 1
     end
   end
 
   erb :"decks/play_card"
+end
+
+post '/play/decks/:deck_id/cards/:card_id' do
+  p "&"*80
+  p params
+  redirect "/play/decks/#{params[:deck_id]}/cards/#{params[:card_id]}"
 end
 
