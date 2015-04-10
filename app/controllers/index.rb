@@ -23,7 +23,11 @@ get '/decks/:id/cards/new' do
     end
 end
 
-# get '/decks/:id/cards/:card_id/edit' do
+
+get '/decks/:id/cards/:id' do
+  @individual_card = Card.where(id: params[:id]).first
+  erb :card
+end
 
 
 
@@ -34,8 +38,11 @@ put '/decks/:id/cards/:id' do #This could possibly be changed to the display dec
   #This route allows you to update cards.
 end
 
-delete '/decks/:id/cards/:id' do
-  erb :cards_delete
+delete '/decks/:id/cards/:card_id' do
+  @to_be_deleted = Card.where(id: params[:card_id]).first
+  @forward = @to_be_deleted.deck_id.to_s
+  @to_be_deleted.delete
+  redirect '/decks/'+@forward+'/edit'
 end
 
 get '/play/decks/show' do

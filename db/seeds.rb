@@ -1,5 +1,6 @@
 require 'faker'
 
+
 5.times do
 
   Deck.create(name: Faker::Lorem.words.join(" "))
@@ -20,4 +21,3 @@ end
       incorrect_answer3:   Faker::Lorem.word
       )
   end
-end

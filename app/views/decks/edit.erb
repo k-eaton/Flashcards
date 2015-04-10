@@ -1,0 +1,22 @@
+<h1>Edit me, bitch!</h1>
+<form action="/decks/<%= @deck.id %>" method="post">
+  <input name="_method" type="hidden" value="put" />
+  <input name="deck_name" type="text" value="<%= @deck.name %>" />
+  <input type="submit" value="update" />
+</form>
+<h5><a href="/decks/<%= @deck.id %>">back</a></h5>
+<h5><a href="/decks/<%= @deck.id %>/cards/new">Add a new card</h5>
+<ul>
+  <% @cards.each do |card| %>
+  <form action="/decks/<%= @deck.id %>/cards/<%= card.id %>" method="post">
+    <input name="_method" type="hidden" value="delete" />
+    <input type="image" src="/imgs/deleteIcon.png" height="20" border="0" class="delete" alt="Submit" />
+  </form>
+    <li class="edit">
+      <a href="/decks/<%= @deck.id %>/cards/<%= card.id %>">
+        <%= card.question %>
+      </a>
+    </li>
+  <% end %>
+</ul>
+
