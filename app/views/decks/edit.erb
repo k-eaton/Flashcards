@@ -1,6 +1,7 @@
 <h1>Edit me, bitch!</h1>
 
 <h2><%= @deck.name %></h2>
+<h3><a href="/decks/<%= @deck.id %>">back</a></h3>
 
 <ul>
   <% @cards.each do |card| %>
@@ -13,7 +14,6 @@
         <%= card.question %>
       </a>
     </li>
-
   <% end %>
 </ul>
 
