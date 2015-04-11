@@ -1,6 +1,26 @@
-<h1>Create a new card for deck</h1>
+<h1>Create a new card for deck <%= @deck.name %></h1>
 <h5><a href="/decks">back</a></h5>
-<form action="/decks/" method="post">
-  <input type="text" name="name" placeholder="Deck name" />
+<form action="/decks/cards" method="post">
+  <div>
+    <input type="hidden" name="deck_id" value="<%=@deck.id%>"
+  <input type="text" name="name" placeholder="Card name" />
+  </div>
+  <div>
+  <input type="text" name="question" placeholder="Question" />
+  </div>
+  <div>
+  <input type="text" name="correct" placeholder="Correct answer" />
+  </div>
+  <div>
+  <input type="text" name="wrong1" placeholder="Incorrect answer" />
+  </div>
+  <div>
+  <input type="text" name="wrong2" placeholder="Incorrect answer" />
+  </div>
+  <div>
+  <input type="text" name="wrong3" placeholder="Incorrect answer" />
+  </div>
+  <div>
   <input type="submit" value="submit" />
+</div>
 </form>
